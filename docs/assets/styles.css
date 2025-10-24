@@ -1,0 +1,234 @@
+:root {
+    color-scheme: light dark;
+    --bg: #0f172a;
+    --bg-alt: rgba(148, 163, 184, 0.08);
+    --surface: rgba(15, 23, 42, 0.8);
+    --accent: #5b8ff9;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --card-radius: 18px;
+    --shadow: 0 12px 40px rgba(15, 23, 42, 0.35);
+    --border: rgba(148, 163, 184, 0.18);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, rgba(91, 143, 249, 0.35), transparent 45%), var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    font-weight: 600;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.hero {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    margin: 0 auto 3rem auto;
+    max-width: 900px;
+}
+
+.hero__avatar {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgba(91, 143, 249, 0.35);
+    box-shadow: var(--shadow);
+}
+
+.hero__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero__handle {
+    font-size: 1.1rem;
+    color: var(--muted);
+}
+
+.hero__tagline {
+    margin: 1rem 0;
+    font-size: 1.15rem;
+    color: var(--text);
+}
+
+.hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-card {
+    padding: 1.75rem;
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.stat-card__value {
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+    color: #f8fafc;
+}
+
+.stat-card__hint {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.panel {
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+}
+
+.panel__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.panel__header p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.panel__body--chart {
+    display: grid;
+    gap: 2rem;
+}
+
+.language-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--muted);
+}
+
+.language-table th,
+.language-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.05);
+    text-align: left;
+}
+
+.language-table th {
+    color: var(--text);
+    font-weight: 500;
+}
+
+.repo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.repo-card {
+    padding: 1.5rem;
+    background: rgba(15, 23, 42, 0.65);
+    border-radius: 16px;
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.repo-card header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.repo-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #f8fafc;
+}
+
+.repo-card__language {
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(91, 143, 249, 0.2);
+    color: #cbd5f5;
+    font-size: 0.8rem;
+}
+
+.repo-card footer {
+    display: flex;
+    gap: 1rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.footer {
+    text-align: center;
+    margin: 4rem auto 2rem;
+    color: var(--muted);
+}
+
+.footer a {
+    color: #82aaff;
+}
+
+@media (max-width: 720px) {
+    body {
+        padding: 1.5rem 1rem;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+    }
+
+    .hero__meta {
+        justify-content: center;
+    }
+
+    .panel {
+        padding: 1.5rem;
+    }
+}

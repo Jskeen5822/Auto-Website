@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Live GitHub statistics for {{ profile.name }} ({{ profile.login }}). Updated daily via GitHub Actions.">
+    <title>{{ profile.name }} · GitHub Insights</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero__avatar">
+            <img src="{{ profile.avatar_url }}" alt="{{ profile.name }} avatar" loading="lazy">
+        </div>
+        <div>
+            <h1>{{ profile.name }}</h1>
+            <p class="hero__handle">@{{ profile.login }}</p>
+            {% if profile.bio %}
+            <p class="hero__tagline">{{ profile.bio }}</p>
+            {% endif %}
+            <div class="hero__meta">
+                {% if profile.location %}<span>📍 {{ profile.location }}</span>{% endif %}
+                {% if profile.blog %}<span>🔗 <a href="{{ profile.blog }}" target="_blank" rel="noopener">{{ profile.blog }}</a></span>{% endif %}
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="stats-grid" aria-label="Key metrics">
+            <article class="stat-card">
+                <h2>Total Stars</h2>
+                <p class="stat-card__value">{{ stats.total_stars }}</p>
+                <p class="stat-card__hint">Across public repositories</p>
+            </article>
+            <article class="stat-card">
+                <h2>Followers</h2>
+                <p class="stat-card__value">{{ stats.followers }}</p>
+                <p class="stat-card__hint">On GitHub</p>
+            </article>
+            <article class="stat-card">
+                <h2>Repositories</h2>
+                <p class="stat-card__value">{{ stats.public_repos }}</p>
+                <p class="stat-card__hint">Public projects</p>
+            </article>
+            <article class="stat-card">
+                <h2>Contributions</h2>
+                <p class="stat-card__value">{{ stats.total_contributions }}</p>
+                <p class="stat-card__hint">Past 365 days</p>
+            </article>
+            <article class="stat-card">
+                <h2>Total Forks</h2>
+                <p class="stat-card__value">{{ stats.total_forks }}</p>
+                <p class="stat-card__hint">Across top repos</p>
+            </article>
+            <article class="stat-card">
+                <h2>Following</h2>
+                <p class="stat-card__value">{{ stats.following }}</p>
+                <p class="stat-card__hint">Developers tracked</p>
+            </article>
+        </section>
+
+        <section class="panel" aria-label="Language breakdown">
+            <div class="panel__header">
+                <h2>Language Footprint</h2>
+                <p>Distribution across public repositories (top {{ language_summary|length }} languages).</p>
+            </div>
+            <div class="panel__body panel__body--chart">
+                {% if language_summary %}
+                <canvas id="languageChart" width="600" height="320" role="img" aria-label="Language usage chart"></canvas>
+                <table class="language-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Language</th>
+                            <th scope="col">Share</th>
+                            <th scope="col">Source bytes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in language_summary %}
+                        <tr>
+                            <th scope="row">{{ entry.language }}</th>
+                            <td>{{ entry.share }}%</td>
+                            <td>{{ "{:,}".format(entry.bytes) }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>No language information available yet.</p>
+                {% endif %}
+            </div>
+        </section>
+
+        <section class="panel" aria-label="Contribution activity">
+            <div class="panel__header">
+                <h2>Contribution Trend</h2>
+                <p>Commits, pull requests, issues, and reviews across the last {{ contribution_trail|length }} days.</p>
+            </div>
+            <div class="panel__body panel__body--chart">
+                {% if contribution_trail %}
+                <canvas id="contributionChart" width="600" height="320" role="img" aria-label="Contribution activity chart"></canvas>
+                {% else %}
+                <p>No contribution data available.</p>
+                {% endif %}
+            </div>
+        </section>
+
+        <section class="panel" aria-label="Highlighted repositories">
+            <div class="panel__header">
+                <h2>Spotlight Projects</h2>
+                <p>Top repositories ranked by stars and forks.</p>
+            </div>
+            <div class="repo-grid">
+                {% for repo in top_repos %}
+                <article class="repo-card">
+                    <header>
+                        <h3><a href="{{ repo.url }}" target="_blank" rel="noopener">{{ repo.name }}</a></h3>
+                        <span class="repo-card__language">{{ repo.language }}</span>
+                    </header>
+                    {% if repo.description %}<p>{{ repo.description }}</p>{% endif %}
+                    <footer>
+                        <span>⭐ {{ repo.stars }}</span>
+                        <span>🍴 {{ repo.forks }}</span>
+                        {% if repo.updated_at %}<span>🡅 {{ repo.updated_at[:10] }}</span>{% endif %}
+                    </footer>
+                </article>
+                {% endfor %}
+                {% if not top_repos %}
+                <p>No repositories to show yet. Keep building!</p>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Generated on {{ generated_at }} by an automated workflow.</p>
+        <p>Source available on <a href="https://github.com/{{ profile.login }}/Auto-Website" target="_blank" rel="noopener">GitHub</a>.</p>
+    </footer>
+
+    <script>
+    const languageData = {{ language_summary | tojson }};
+    const contributionData = {{ contribution_trail | tojson }};
+
+    const palette = [
+        "#5B8FF9",
+        "#5AD8A6",
+        "#5D7092",
+        "#F6BD16",
+        "#E8684A",
+        "#6DC8EC",
+        "#9270CA",
+        "#FF9D4D"
+    ];
+
+    function buildLanguageChart() {
+        if (!languageData.length || !window.Chart) return;
+        const ctx = document.getElementById('languageChart');
+        const labels = languageData.map(item => item.language);
+        const shares = languageData.map(item => item.share);
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels,
+                datasets: [{
+                    data: shares,
+                    backgroundColor: palette,
+                    borderWidth: 0,
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                    }
+                }
+            }
+        });
+    }
+
+    function buildContributionChart() {
+        if (!contributionData.length || !window.Chart) return;
+        const ctx = document.getElementById('contributionChart');
+        const labels = contributionData.map(point => point.date);
+        const counts = contributionData.map(point => point.count);
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels,
+                datasets: [{
+                    label: 'Daily contributions',
+                    data: counts,
+                    borderColor: '#5B8FF9',
+                    backgroundColor: 'rgba(91, 143, 249, 0.2)',
+                    tension: 0.3,
+                    pointRadius: 0,
+                    fill: true,
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        ticks: {
+                            maxTicksLimit: 8,
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        buildLanguageChart();
+        buildContributionChart();
+    });
+    </script>
+</body>
+</html>

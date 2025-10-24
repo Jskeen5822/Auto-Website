@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Live GitHub statistics for Jonathon Skeen (Jskeen5822). Updated daily via GitHub Actions.">
+    <title>Jonathon Skeen · GitHub Insights</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero__avatar">
+            <img src="https://avatars.githubusercontent.com/u/180024619?v=4" alt="Jonathon Skeen avatar" loading="lazy">
+        </div>
+        <div>
+            <h1>Jonathon Skeen</h1>
+            <p class="hero__handle">@Jskeen5822</p>
+            <div class="hero__meta">
+<span>📍 Marietta, OH</span>            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="stats-grid" aria-label="Key metrics">
+            <article class="stat-card">
+                <h2>Total Stars</h2>
+                <p class="stat-card__value">0</p>
+                <p class="stat-card__hint">Across public repositories</p>
+            </article>
+            <article class="stat-card">
+                <h2>Followers</h2>
+                <p class="stat-card__value">1</p>
+                <p class="stat-card__hint">On GitHub</p>
+            </article>
+            <article class="stat-card">
+                <h2>Repositories</h2>
+                <p class="stat-card__value">8</p>
+                <p class="stat-card__hint">Public projects</p>
+            </article>
+            <article class="stat-card">
+                <h2>Contributions</h2>
+                <p class="stat-card__value">170</p>
+                <p class="stat-card__hint">Past 365 days</p>
+            </article>
+            <article class="stat-card">
+                <h2>Total Forks</h2>
+                <p class="stat-card__value">0</p>
+                <p class="stat-card__hint">Across top repos</p>
+            </article>
+            <article class="stat-card">
+                <h2>Following</h2>
+                <p class="stat-card__value">4</p>
+                <p class="stat-card__hint">Developers tracked</p>
+            </article>
+        </section>
+
+        <section class="panel" aria-label="Language breakdown">
+            <div class="panel__header">
+                <h2>Language Footprint</h2>
+                <p>Distribution across public repositories (top 2 languages).</p>
+            </div>
+            <div class="panel__body panel__body--chart">
+                <canvas id="languageChart" width="600" height="320" role="img" aria-label="Language usage chart"></canvas>
+                <table class="language-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Language</th>
+                            <th scope="col">Share</th>
+                            <th scope="col">Source bytes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Python</th>
+                            <td>99.27%</td>
+                            <td>45,830</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">C++</th>
+                            <td>0.73%</td>
+                            <td>337</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="panel" aria-label="Contribution activity">
+            <div class="panel__header">
+                <h2>Contribution Trend</h2>
+                <p>Commits, pull requests, issues, and reviews across the last 120 days.</p>
+            </div>
+            <div class="panel__body panel__body--chart">
+                <canvas id="contributionChart" width="600" height="320" role="img" aria-label="Contribution activity chart"></canvas>
+            </div>
+        </section>
+
+        <section class="panel" aria-label="Highlighted repositories">
+            <div class="panel__header">
+                <h2>Spotlight Projects</h2>
+                <p>Top repositories ranked by stars and forks.</p>
+            </div>
+            <div class="repo-grid">
+                <article class="repo-card">
+                    <header>
+                        <h3><a href="https://github.com/Jskeen5822/Auto-Website" target="_blank" rel="noopener">Auto-Website</a></h3>
+                        <span class="repo-card__language">Unknown</span>
+                    </header>
+<p>A lightweight automation script that builds, deploys, and updates a website with zero manual effort. It monitors your source files for changes, regenerates static pages or pulls updates from your CMS, and instantly pushes them live. Ideal for developers who want continuous integration for personal sites, portfolios, or project pages.</p>                    <footer>
+                        <span>⭐ 0</span>
+                        <span>🍴 0</span>
+<span>🡅 2025-10-24</span>                    </footer>
+                </article>
+                <article class="repo-card">
+                    <header>
+                        <h3><a href="https://github.com/Jskeen5822/SQL-and-Aggregate-Databases" target="_blank" rel="noopener">SQL-and-Aggregate-Databases</a></h3>
+                        <span class="repo-card__language">Python</span>
+                    </header>
+<p>A Python script that will fetch the data from all the repositories and store it in sql database and has to compute aggregates with database tables</p>                    <footer>
+                        <span>⭐ 0</span>
+                        <span>🍴 0</span>
+<span>🡅 2025-10-23</span>                    </footer>
+                </article>
+                <article class="repo-card">
+                    <header>
+                        <h3><a href="https://github.com/Jskeen5822/Jskeen5822" target="_blank" rel="noopener">Jskeen5822</a></h3>
+                        <span class="repo-card__language">Unknown</span>
+                    </header>
+                    <footer>
+                        <span>⭐ 0</span>
+                        <span>🍴 0</span>
+<span>🡅 2025-10-23</span>                    </footer>
+                </article>
+                <article class="repo-card">
+                    <header>
+                        <h3><a href="https://github.com/Jskeen5822/Memorymanager" target="_blank" rel="noopener">Memorymanager</a></h3>
+                        <span class="repo-card__language">Unknown</span>
+                    </header>
+<p>A C++ project simulating dynamic memory allocation</p>                    <footer>
+                        <span>⭐ 0</span>
+                        <span>🍴 0</span>
+<span>🡅 2025-10-20</span>                    </footer>
+                </article>
+                <article class="repo-card">
+                    <header>
+                        <h3><a href="https://github.com/Jskeen5822/Currencyconverter" target="_blank" rel="noopener">Currencyconverter</a></h3>
+                        <span class="repo-card__language">Unknown</span>
+                    </header>
+<p>Input amount and currency of your choice and convert it to another</p>                    <footer>
+                        <span>⭐ 0</span>
+                        <span>🍴 0</span>
+<span>🡅 2025-10-20</span>                    </footer>
+                </article>
+                <article class="repo-card">
+                    <header>
+                        <h3><a href="https://github.com/Jskeen5822/ML-project" target="_blank" rel="noopener">ML-project</a></h3>
+                        <span class="repo-card__language">Python</span>
+                    </header>
+<p>A basic machine learning algorithm for automation and problem solving</p>                    <footer>
+                        <span>⭐ 0</span>
+                        <span>🍴 0</span>
+<span>🡅 2025-10-20</span>                    </footer>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Generated on 2025-10-24 16:06 UTC by an automated workflow.</p>
+        <p>Source available on <a href="https://github.com/Jskeen5822/Auto-Website" target="_blank" rel="noopener">GitHub</a>.</p>
+    </footer>
+
+    <script>
+    const languageData = [{"bytes": 45830, "language": "Python", "share": 99.27}, {"bytes": 337, "language": "C++", "share": 0.73}];
+    const contributionData = [{"count": 0, "date": "2025-06-27"}, {"count": 0, "date": "2025-06-28"}, {"count": 0, "date": "2025-06-29"}, {"count": 0, "date": "2025-06-30"}, {"count": 0, "date": "2025-07-01"}, {"count": 0, "date": "2025-07-02"}, {"count": 0, "date": "2025-07-03"}, {"count": 0, "date": "2025-07-04"}, {"count": 0, "date": "2025-07-05"}, {"count": 0, "date": "2025-07-06"}, {"count": 0, "date": "2025-07-07"}, {"count": 0, "date": "2025-07-08"}, {"count": 0, "date": "2025-07-09"}, {"count": 0, "date": "2025-07-10"}, {"count": 0, "date": "2025-07-11"}, {"count": 0, "date": "2025-07-12"}, {"count": 0, "date": "2025-07-13"}, {"count": 0, "date": "2025-07-14"}, {"count": 0, "date": "2025-07-15"}, {"count": 0, "date": "2025-07-16"}, {"count": 0, "date": "2025-07-17"}, {"count": 0, "date": "2025-07-18"}, {"count": 0, "date": "2025-07-19"}, {"count": 0, "date": "2025-07-20"}, {"count": 0, "date": "2025-07-21"}, {"count": 0, "date": "2025-07-22"}, {"count": 0, "date": "2025-07-23"}, {"count": 0, "date": "2025-07-24"}, {"count": 0, "date": "2025-07-25"}, {"count": 0, "date": "2025-07-26"}, {"count": 0, "date": "2025-07-27"}, {"count": 0, "date": "2025-07-28"}, {"count": 0, "date": "2025-07-29"}, {"count": 0, "date": "2025-07-30"}, {"count": 0, "date": "2025-07-31"}, {"count": 0, "date": "2025-08-01"}, {"count": 0, "date": "2025-08-02"}, {"count": 0, "date": "2025-08-03"}, {"count": 0, "date": "2025-08-04"}, {"count": 0, "date": "2025-08-05"}, {"count": 0, "date": "2025-08-06"}, {"count": 0, "date": "2025-08-07"}, {"count": 0, "date": "2025-08-08"}, {"count": 0, "date": "2025-08-09"}, {"count": 0, "date": "2025-08-10"}, {"count": 0, "date": "2025-08-11"}, {"count": 0, "date": "2025-08-12"}, {"count": 0, "date": "2025-08-13"}, {"count": 0, "date": "2025-08-14"}, {"count": 0, "date": "2025-08-15"}, {"count": 0, "date": "2025-08-16"}, {"count": 0, "date": "2025-08-17"}, {"count": 0, "date": "2025-08-18"}, {"count": 0, "date": "2025-08-19"}, {"count": 0, "date": "2025-08-20"}, {"count": 0, "date": "2025-08-21"}, {"count": 0, "date": "2025-08-22"}, {"count": 0, "date": "2025-08-23"}, {"count": 0, "date": "2025-08-24"}, {"count": 0, "date": "2025-08-25"}, {"count": 0, "date": "2025-08-26"}, {"count": 0, "date": "2025-08-27"}, {"count": 3, "date": "2025-08-28"}, {"count": 0, "date": "2025-08-29"}, {"count": 0, "date": "2025-08-30"}, {"count": 0, "date": "2025-08-31"}, {"count": 0, "date": "2025-09-01"}, {"count": 0, "date": "2025-09-02"}, {"count": 0, "date": "2025-09-03"}, {"count": 0, "date": "2025-09-04"}, {"count": 0, "date": "2025-09-05"}, {"count": 0, "date": "2025-09-06"}, {"count": 0, "date": "2025-09-07"}, {"count": 0, "date": "2025-09-08"}, {"count": 0, "date": "2025-09-09"}, {"count": 0, "date": "2025-09-10"}, {"count": 0, "date": "2025-09-11"}, {"count": 0, "date": "2025-09-12"}, {"count": 0, "date": "2025-09-13"}, {"count": 0, "date": "2025-09-14"}, {"count": 0, "date": "2025-09-15"}, {"count": 0, "date": "2025-09-16"}, {"count": 0, "date": "2025-09-17"}, {"count": 1, "date": "2025-09-18"}, {"count": 0, "date": "2025-09-19"}, {"count": 0, "date": "2025-09-20"}, {"count": 0, "date": "2025-09-21"}, {"count": 0, "date": "2025-09-22"}, {"count": 0, "date": "2025-09-23"}, {"count": 0, "date": "2025-09-24"}, {"count": 0, "date": "2025-09-25"}, {"count": 0, "date": "2025-09-26"}, {"count": 0, "date": "2025-09-27"}, {"count": 0, "date": "2025-09-28"}, {"count": 0, "date": "2025-09-29"}, {"count": 0, "date": "2025-09-30"}, {"count": 0, "date": "2025-10-01"}, {"count": 0, "date": "2025-10-02"}, {"count": 0, "date": "2025-10-03"}, {"count": 0, "date": "2025-10-04"}, {"count": 0, "date": "2025-10-05"}, {"count": 0, "date": "2025-10-06"}, {"count": 0, "date": "2025-10-07"}, {"count": 0, "date": "2025-10-08"}, {"count": 0, "date": "2025-10-09"}, {"count": 1, "date": "2025-10-10"}, {"count": 0, "date": "2025-10-11"}, {"count": 0, "date": "2025-10-12"}, {"count": 0, "date": "2025-10-13"}, {"count": 2, "date": "2025-10-14"}, {"count": 1, "date": "2025-10-15"}, {"count": 11, "date": "2025-10-16"}, {"count": 15, "date": "2025-10-17"}, {"count": 15, "date": "2025-10-18"}, {"count": 11, "date": "2025-10-19"}, {"count": 23, "date": "2025-10-20"}, {"count": 22, "date": "2025-10-21"}, {"count": 19, "date": "2025-10-22"}, {"count": 28, "date": "2025-10-23"}, {"count": 18, "date": "2025-10-24"}];
+
+    const palette = [
+        "#5B8FF9",
+        "#5AD8A6",
+        "#5D7092",
+        "#F6BD16",
+        "#E8684A",
+        "#6DC8EC",
+        "#9270CA",
+        "#FF9D4D"
+    ];
+
+    function buildLanguageChart() {
+        if (!languageData.length || !window.Chart) return;
+        const ctx = document.getElementById('languageChart');
+        const labels = languageData.map(item => item.language);
+        const shares = languageData.map(item => item.share);
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels,
+                datasets: [{
+                    data: shares,
+                    backgroundColor: palette,
+                    borderWidth: 0,
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                    }
+                }
+            }
+        });
+    }
+
+    function buildContributionChart() {
+        if (!contributionData.length || !window.Chart) return;
+        const ctx = document.getElementById('contributionChart');
+        const labels = contributionData.map(point => point.date);
+        const counts = contributionData.map(point => point.count);
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels,
+                datasets: [{
+                    label: 'Daily contributions',
+                    data: counts,
+                    borderColor: '#5B8FF9',
+                    backgroundColor: 'rgba(91, 143, 249, 0.2)',
+                    tension: 0.3,
+                    pointRadius: 0,
+                    fill: true,
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        ticks: {
+                            maxTicksLimit: 8,
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        buildLanguageChart();
+        buildContributionChart();
+    });
+    </script>
+</body>
+</html>
