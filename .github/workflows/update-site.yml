@@ -11,25 +11,29 @@ permissions:
 jobs:
   build-site:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_USERNAME: Jskeen5822
-      GH_STATS_TOKEN: ${{ secrets.GH_STATS_TOKEN }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake libcurl4-openssl-dev
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      - name: Configure CMake
+        run: cmake -S c -B build
+
+      - name: Build site generator
+        run: cmake --build build --config Release
 
       - name: Generate website
-        run: python scripts/update_site.py
+        env:
+          GITHUB_USERNAME: Jskeen5822
+          GITHUB_TOKEN: ${{ secrets.GH_STATS_TOKEN }}
+          GH_STATS_TOKEN: ${{ secrets.GH_STATS_TOKEN }}
+        run: ./build/github_stats
 
       - name: Commit and push changes
         run: |
